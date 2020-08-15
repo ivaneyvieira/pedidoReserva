@@ -1,0 +1,9 @@
+{
+  "compatibilityMode": false,
+  "productionMode": false,
+  "npmFolder": "/home/ivaneyvieira/git/pedidoReserva",
+  "generatedFolder": "/home/ivaneyvieira/git/pedidoReserva/target/frontend",
+  "frontendFolder": "/home/ivaneyvieira/git/pedidoReserva/frontend",
+  "pnpm.enable": false,
+  "require.home.node": false
+}
