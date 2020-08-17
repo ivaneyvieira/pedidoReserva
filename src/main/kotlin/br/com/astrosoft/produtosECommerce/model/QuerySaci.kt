@@ -34,9 +34,9 @@ class QuerySaci: QueryDB("saci", driver, url, username, password) {
   private fun pedidoRetira(loja: Int, numPedido: Int, tipo: String): List<PedidoReserva> {
     val sql = "/sqlSaci/pedidoReserva.sql"
     return query(sql, PedidoReserva::class) {
-      addParameter("loja", loja)
-      addParameter("numPedido", numPedido)
-      addParameter("tipo", tipo)
+      addOptionalParameter("loja", loja)
+      addOptionalParameter("numPedido", numPedido)
+      addOptionalParameter("tipo", tipo)
     }
   }
   
