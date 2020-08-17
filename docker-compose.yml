@@ -1,6 +1,6 @@
 version: "3"
 services:
-  engecopi_prdecomerce:
+  engecopi_pedido_reserva:
     image: tomcat:8
     container_name: eng_pedido_reserva
     ports:
