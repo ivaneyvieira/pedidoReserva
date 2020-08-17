@@ -49,7 +49,7 @@ class QuerySaci: QueryDB("saci", driver, url, username, password) {
   }
   
   fun produtoPedido(loja: Int, numPedido: Int): List<ProdutoPedido> {
-    val sql = "/sqlSaci/pedidoReserva.sql"
+    val sql = "/sqlSaci/produtoPedido.sql"
     return query(sql, ProdutoPedido::class) {
       addParameter("loja", loja)
       addParameter("numPedido", numPedido)

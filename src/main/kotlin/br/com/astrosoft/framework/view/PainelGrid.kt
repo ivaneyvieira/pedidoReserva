@@ -27,7 +27,7 @@ import java.math.BigDecimal
 import java.util.*
 import kotlin.reflect.KClass
 
-abstract class PainelGrid< T: Any>(val blockUpdate: () -> Unit): VerticalLayout() {
+abstract class PainelGrid< T: Any>(): VerticalLayout() {
   protected var grid: Grid<T>
   private val gridDataProvider = ListDataProvider<T>(mutableListOf())
   val filterBar: FilterBar by lazy {
@@ -60,6 +60,8 @@ abstract class PainelGrid< T: Any>(val blockUpdate: () -> Unit): VerticalLayout(
     grid.deselectAll()
     gridDataProvider.updateItens(itens)
   }
+  
+  abstract fun updateGrid()
   
   protected abstract fun Grid<T>.gridConfig()
   

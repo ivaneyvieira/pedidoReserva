@@ -12,17 +12,34 @@ class PedidoReserva(
   val cliente: String,
   val nfno: Int,
   val nfse: String,
+  val rota: String,
+  val notaTransf : String,
+  val notaTransfData : LocalDate,
   val status: Int
                    ) {
   
+  val notaFiscal: String
+    get() = numeroNota(nfno, nfse)
   
+  val statusPedido
+    get() = StatusPedido.values()
+      .toList()
+      .firstOrNull {it.numero == status}
+  
+  private fun numeroNota(nfno: Int, nfse: String): String {
+    return when {
+      nfno == 0 -> ""
+      nfse == "" -> nfno.toString()
+      else       -> "$nfno/$nfse"
+    }
+  }
   companion object {
     private val userSaci: UserSaci
       get() = AppConfig.userSaci as UserSaci
     
     fun findPedido(numPedido : Int) = saci.pedidoRetira(userSaci.storeno, numPedido)
     
-    fun findReserva() = saci.pedidoRetira()
+    fun findReserva() = saci.pedidoRetira(userSaci.storeno)
   }
   
   override fun equals(other: Any?): Boolean {
@@ -44,4 +61,18 @@ class PedidoReserva(
   }
   
   fun produtos() : List<ProdutoPedido> = saci.produtoPedido(loja, numPedido)
+}
+
+enum class StatusPedido(val numero: Int, val descricao: String) {
+  INCLUIDO(0, "Incluído"),
+  ORCADO(1, "Orçado"),
+  RESERVADO(2, "Reservado"),
+  VENDIDO(3, "Vendido"),
+  EXPIRADO(4, "Expirado"),
+  CANCELADO(5, "Cancelado"),
+  RESERVADO_B(6, "Reserva B"),
+  TRANSITO(7, "Trânsito"),
+  FUTURA(8, "Futura");
+  
+  override fun toString() = descricao
 }

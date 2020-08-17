@@ -1,11 +1,14 @@
-SELECT O.storeno                              AS loja,
-       O.ordno                                AS numPedido,
-       cast(O.date AS DATE)                   AS dataPedido,
-       custno                                 AS codigoCliente,
-       C.name                                 AS cliente,
-       IF(O.nfno = 0, O.nfno_futura, O.nfno)  AS nfno,
-       IF(O.nfse = '', O.nfse_futura, O.nfse) AS nfse,
-       O.status                               AS status
+SELECT O.storeno                             AS loja,
+       O.ordno                               AS numPedido,
+       cast(O.date AS DATE)                  AS dataPedido,
+       custno                                AS codigoCliente,
+       C.name                                AS cliente,
+       IF(O.nfno = 0, O.nfno_futura, O.nfno) AS nfno,
+       IF(O.nfno = 0, O.nfse_futura, O.nfse) AS nfse,
+       ''                                    AS rota,
+       ''                                    AS notaTransf,
+       cast(NULL AS DATE)                    AS notaTransfData,
+       O.status                              AS status
 FROM sqldados.eord          AS O
   INNER JOIN sqldados.custp AS C
 	       ON C.no = O.custno

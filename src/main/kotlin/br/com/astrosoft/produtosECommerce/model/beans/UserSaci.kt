@@ -29,7 +29,7 @@ class UserSaci: IUser {
     get() = login == "ADM"
   
   companion object {
-    private val BIT_ATIVO = 2.pow(12)
+    private val BIT_ATIVO = 2.pow(0)
   
     fun findAllAtivos(): List<UserSaci> {
       return saci.findAllUser()

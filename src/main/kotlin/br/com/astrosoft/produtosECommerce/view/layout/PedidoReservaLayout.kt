@@ -1,10 +1,9 @@
 package br.com.astrosoft.produtosECommerce.view.layout
 
 import br.com.astrosoft.AppConfig
-import br.com.astrosoft.produtosECommerce.view.cruds.BitolaView
-import br.com.astrosoft.produtosECommerce.view.cruds.CategoriaView
+
 import br.com.astrosoft.produtosECommerce.view.main.PedidoReservaView
-import br.com.astrosoft.produtosECommerce.view.cruds.MarcaView
+
 import br.com.astrosoft.produtosECommerce.view.user.UsuarioView
 import com.github.mvysny.karibudsl.v10.anchor
 import com.github.mvysny.karibudsl.v10.drawer
@@ -56,18 +55,6 @@ class PedidoReservaLayout: AppLayout() {
         tab {
           this.icon(VaadinIcon.FORM)
           routerLink(text = "Produtos", viewType = PedidoReservaView::class)
-        }
-        tab {
-          this.icon(VaadinIcon.CUBES)
-          routerLink(text = "Categoria", viewType = CategoriaView::class)
-        }
-        tab {
-          this.icon(VaadinIcon.CUBE)
-          routerLink(text = "Marca", viewType = MarcaView::class)
-        }
-        tab {
-          this.icon(VaadinIcon.CIRCLE_THIN)
-          routerLink(text = "Bitola", viewType = BitolaView::class)
         }
         tab {
           this.isEnabled = AppConfig.userSaci?.roles()?.contains("ADMIN") ?: false
